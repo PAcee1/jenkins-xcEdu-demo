@@ -1,11 +1,11 @@
 server:
-  port: 31200
+  port: 33333
 spring:
   application:
     name: xc-service-manage-course
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/xc_course?characterEncoding=utf-8
+      url: jdbc:mysql://192.168.56.1:3306/xc_course?characterEncoding=utf-8
       username: root
       password: root
       driverClassName: com.mysql.jdbc.Driver
@@ -22,11 +22,10 @@ pagehelper:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:50101/eureka/ #,http://localhost:50102/eureka/
+      defaultZone: http://192.168.56.133:11111/eureka/ #,http://localhost:50102/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    ip-address: 127.0.0.1
 # 设置feign调用超时时间
 ribbon:
   ConnectTimeout: 10000 # 连接请求

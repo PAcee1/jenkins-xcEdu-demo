@@ -1,5 +1,5 @@
 server:
-  port: 50201
+  port: 22222
   servlet:
     context-path: /api
 spring:
@@ -8,11 +8,10 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:50101/eureka/ #,http://localhost:50102/eureka/
+      defaultZone: http://192.168.56.133:11111/eureka/ #,http://localhost:50102/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    ip-address: 127.0.0.1
 ribbon:
   MaxAutoRetries: 2 #最大重试次数，当Eureka中可以找到服务，但是服务连不上时将会重试，如果eureka中找不到服务则直接走断路器
   MaxAutoRetriesNextServer: 3 #切换实例的重试次数
@@ -24,7 +23,7 @@ zuul:
     manage-course:
       path: /course/** # 路由配置
       serviceId: xc-service-manage-course # 服务id
-      # 配置了这两个之后，请求localhost:50201/api/course之后，就会转发到localhost:31200/course
-      # url: http://localhost:31200 #也可指定url
+      # 配置了这两个之后，请求localhost:22222/api/course之后，就会转发到localhost:33333/course
+      # url: http://localhost:33333 #也可指定url
       strip-prefix: false # 代理转发时是否去掉前缀，即把/course去掉，这里不去掉，因为我们的课程服务就是以/course打头的
       sensitiveHeaders: # 不屏蔽cookie
