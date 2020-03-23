@@ -15,7 +15,6 @@ node {
        // 引入Sonar服务器环境，这里是我们Jenkins系统配置中Sonar的名称
        withSonarQubeEnv('sonar'){
            sh """
-                // 进入到项目目录
                 cd ${project_name}
                 ${scannerHome}/bin/sonar-scanner
              """
