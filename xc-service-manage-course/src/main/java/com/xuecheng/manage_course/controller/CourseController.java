@@ -28,20 +28,6 @@ public class CourseController extends BaseController{
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("/coursebase/list/{page}/{size}")
-    public QueryResponseResult<CourseInfo> findCourseList(@PathVariable int page,
-                                                          @PathVariable int size,
-                                                          CourseListRequest courseListRequest) {
-        // 先从请求头的JWT中获取id
-        XcOauth2Util oauth2Util = new XcOauth2Util();
-        XcOauth2Util.UserJwt userJwtFromHeader = oauth2Util.getUserJwtFromHeader(request);
-        String companyId = userJwtFromHeader.getCompanyId();
-        QueryResult<CourseInfo> queryResult = courseService.findCourseList(page,size,companyId,courseListRequest);
-        QueryResponseResult<CourseInfo> queryResponseResult = new QueryResponseResult<>(
-                CommonCode.SUCCESS,queryResult);
-        return queryResponseResult;
-    }
-
     @GetMapping("/coursebase/get/{courseId}")
     public CourseBase getCourseBaseById(@PathVariable String courseId) {
         return courseService.getCourseBaseById(courseId);

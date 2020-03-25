@@ -22,10 +22,10 @@ pagehelper:
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.56.133:11111/eureka/ #,http://localhost:50102/eureka/
+      #defaultZone: http://192.168.56.133:11111/eureka/ #,http://localhost:50102/eureka/
+      defaultZone: http://192.168.56.133:11111/eureka/,http://192.168.56.134:11111/eureka/
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
 # 设置feign调用超时时间
 ribbon:
   ConnectTimeout: 10000 # 连接请求

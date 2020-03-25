@@ -1,0 +1,9 @@
+eureka:
+  client:
+    fetch-registry: true # 单机关闭
+    register-with-eureka: true # 单机关闭
+    service-url:
+      defaultZone: http://192.168.56.133:11111/eureka/,http://192.168.56.134:11111/eureka/
+  instance:
+    hostname: eureka01
+    prefer-ip-address: true

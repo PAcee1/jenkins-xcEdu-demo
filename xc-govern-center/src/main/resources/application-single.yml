@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: xc-govern-center
+server:
+  port: 11111
+eureka:
+  client:
+    fetch-registry: false # 单机关闭
+    register-with-eureka: false # 单机关闭
+    service-url:
+      defaultZone: http://192.168.56.133:11111/eureka/
+  server:
+    enable-self-preservation: false # 开发关闭自我保护
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
